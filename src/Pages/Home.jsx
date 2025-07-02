@@ -2,6 +2,7 @@ import React from 'react'
 import Hero from '../Components/layout/Hero'
 import Exclusive from '../Components/Products/Exclusive'
 import { FaChevronRight } from 'react-icons/fa'
+import CompleteLook from '../Components/layout/CompleteLook'
 
 const Home = () => {
   return (
@@ -9,7 +10,7 @@ const Home = () => {
   <Hero />
   <Exclusive/>
   {/*2images*/}
-  <div className='flex flex-col sm:flex-row  mb-4'>
+  <div className='flex flex-col sm:flex-row  mb-14'>
     <div className='relative w-full sm:w-1/2  mb-8 sm:mb-0'>
       <img className=" sm:h-full w-full object-cover" src="./Man.avif" alt="Man T-shirt" />
       <div
@@ -38,6 +39,7 @@ const Home = () => {
       </div>
     </div>
   </div>
+  <CompleteLook/>
 
    
    </>
