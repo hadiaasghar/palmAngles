@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { CiHeart } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import ProductCard from "./ProductCard"; // <-- import your reusable card
 
 const Exclusive = () => {
   const scrollRef = useRef(null);
@@ -152,7 +151,6 @@ const Exclusive = () => {
     },
   ];
 
- 
   const [imgIndexes, setImgIndexes] = useState(
     exclusiveProducts.map(() => 0)
   );
@@ -226,19 +224,13 @@ const Exclusive = () => {
   }, []);
 
   return (
-    <section className="py-16 mb-4 px-4 lg:px-0">
+    <section className="py-16 px-4 lg:px-0">
       <div className="container mx-auto relative text-center mb-10">
         <div className="right-0 absolute flex bottom-[-30px] space-x-3">
-          <button
-            onClick={() => scroll("left")}
-            className=""
-          >
+          <button onClick={() => scroll("left")} className="">
             <FiChevronLeft className="text-2xl" />
           </button>
-          <button
-            onClick={() => scroll("right")}
-            className=""
-          >
+          <button onClick={() => scroll("right")} className="">
             <FiChevronRight className="text-2xl" />
           </button>
         </div>
@@ -246,81 +238,25 @@ const Exclusive = () => {
 
       <div
         ref={scrollRef}
-        className="container  relative overflow-x-scroll flex space-x-6"
+        className="container relative overflow-x-scroll flex space-x-1"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
         onMouseMove={handleMouseMove}
       >
-        {exclusiveProducts.map((product, idx) => (
-          <div
-            className="flex flex-col min-w-[100%] sm:min-w-[50%] lg:min-w-[30%]"
+        {exclusiveProducts.map((product) => (
+          <ProductCard
             key={product.id}
-            onMouseEnter={() => {
-              if (product.images.length > 1) {
-                setImgIndexes((prev) => {
-                  const newIndexes = [...prev];
-                  newIndexes[idx] = 1;
-                  return newIndexes;
-                });
-              }
-            }}
-            onMouseLeave={() => {
-              setImgIndexes((prev) => {
-                const newIndexes = [...prev];
-                newIndexes[idx] = 0;
-                return newIndexes;
-              });
-            }}
-          >
-            <div className="relative flex items-center justify-center">
-              <img
-                src={product.images[imgIndexes[idx]].url}
-                alt={product.images[imgIndexes[idx]].altText || product.name}
-                className="w-full h-full object-cover rounded-t-lg"
-                draggable="false"
-              />
-              {/* Heart Icon */}
-              <button className="absolute top-4 right-4 text-black hover:text-red-500 transition-colors">
-                <CiHeart size={26} />
-              </button>
-              {/* Left/Right Arrows */}
-              {product.images.length > 1 && (
-                <>
-                  <button
-                    className="absolute left-2 top-1/2 -translate-y-1/2  p-1  transition-colors"
-                    onClick={() => handlePrev(idx)}
-                  >
-                    <FiChevronLeft size={22} />
-                  </button>
-                  <button
-                    className="absolute right-2 top-1/2 -translate-y-1/2 p-1 transition-colors"
-                    onClick={() => handleNext(idx)}
-                  >
-                    <FiChevronRight size={22} />
-                  </button>
-                </>
-              )}
-            </div>
-            <div className="flex-1 flex flex-col justify-between px-4 py-3">
-              <Link to={`/product/${product.id}`}>
-                <h3 className="uppercase font-semibold text-base tracking-tight mb-2">
-                  {product.name}
-                </h3>
-              </Link>
-              <div className="flex items-end gap-2">
-                <span className="font-bold text-lg">£{product.price}</span>
-              </div>
-            </div>
-          </div>
+            product={product}
+            cardClassName="min-w-[100%] sm:min-w-[50%] lg:min-w-[30%]"
+            imageHeight="h-[350px]"
+          />
         ))}
-        
       </div>
-       <div className="mx-4 ">
-      <p className="uppercase text-gray-400 text-sm ">Exclusive</p>
+      <div className="mx-4 ">
+        <p className="uppercase text-gray-400 text-sm ">Exclusive</p>
       </div>
-     
     </section>
   );
 };

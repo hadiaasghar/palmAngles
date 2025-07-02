@@ -3,7 +3,7 @@ import { FaChevronRight } from 'react-icons/fa'
 
 const Hero = () => {
   return (
-    <div className="relative mb-4 overflow-hidden">
+    <div className="relative  overflow-hidden">
       <img
         src="/hero.avif"
         alt="hero"

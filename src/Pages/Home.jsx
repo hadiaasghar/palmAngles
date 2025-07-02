@@ -8,28 +8,36 @@ const Home = () => {
    <>
   <Hero />
   <Exclusive/>
-  <div className='flex'>
-  <div className='relative w-1/2'>
-    <img className="h-full w-full object-cover" src="./Man.avif" />
-    <div
-      className="absolute bottom-6 left-1/2 transform -translate-x-1/2 sm:bottom-10 sm:left-1/2 sm:-translate-x-1/2 p-2 sm:p-4 bg-black/50 flex min-w-0 sm:min-w-2xl sm:max-w-fit justify-between h-10 sm:h-11 items-center text-white rounded px-8 lg:w-36"
-      style={{ width: "50%" }}
-    >
-      <p className="tracking-tight uppercase text-xs sm:text-base">Discover More</p>
-      <FaChevronRight className="text-white text-base sm:text-xl" />
+  {/*2images*/}
+  <div className='flex flex-col sm:flex-row  mb-4'>
+    <div className='relative w-full sm:w-1/2  mb-8 sm:mb-0'>
+      <img className=" sm:h-full w-full object-cover" src="./Man.avif" alt="Man T-shirt" />
+      <div
+        className="absolute bottom-6 left-1/2 transform -translate-x-1/2
+                sm:bottom-10 sm:left-1/2 sm:-translate-x-1/2
+                p-2 sm:p-4 bg-black/50 flex items-center justify-between
+                h-10 sm:h-11 text-white rounded px-8
+                w-fit sm:w-fit lg:w-[90%]"
+      >
+        <p className="tracking-tight uppercase text-xs sm:text-base">Man T-shirt</p>
+        <FaChevronRight className="text-white text-base sm:text-xl" />
+      </div>
+    </div>
+
+    <div className='relative  w-full sm:w-1/2'>
+      <img className=" sm:h-full w-full object-cover" src="./women.avif" alt="Women sale" />
+      <div
+        className="absolute bottom-6 left-1/2 transform -translate-x-1/2
+                sm:bottom-10 sm:left-1/2 sm:-translate-x-1/2
+                p-2 sm:p-4 bg-black/50 flex items-center justify-between
+                h-10 sm:h-11 text-white rounded px-8
+                w-fit sm:w-fit lg:w-[90%]"
+      >
+        <p className="tracking-tight uppercase text-xs sm:text-base">Women sale</p>
+        <FaChevronRight className="text-white text-base sm:text-xl" />
+      </div>
     </div>
   </div>
-  <div className='relative w-1/2'>
-    <img className="h-full w-full object-cover" src="./women.avif" />
-    <div
-      className="absolute bottom-6 left-1/2 transform -translate-x-1/2 sm:bottom-10 sm:left-1/2 sm:-translate-x-1/2 p-2 sm:p-4 bg-black/50 flex min-w-0 sm:min-w-2xl sm:max-w-fit justify-between h-10 sm:h-11 items-center text-white rounded px-8 lg:w-36"
-      style={{ width: "50%" }}
-    >
-      <p className="tracking-tight uppercase text-xs sm:text-base">Discover More</p>
-      <FaChevronRight className="text-white text-base sm:text-xl" />
-    </div>
-  </div>
-</div>
 
    
    </>
